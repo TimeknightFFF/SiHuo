@@ -1,76 +1,70 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-        <LinearLayout
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="vertical"></LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ff000000"/>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linearLayout1">
+
+        <RadioGroup
+            android:id="@+id/main_radio"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7">
-            </LinearLayout>
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_below="@+id/linearLayout1">
-           <RadioGroup
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:orientation="horizontal">
-               <RadioButton
-                   android:layout_width="55dp"
-                   android:layout_height="65dp"
-                   android:drawableTop="@drawable/sihuo_radio_button"
-                   android:text="私货"
-                   android:textSize="20sp"
-                   android:button="@null"
-                   android:layout_marginLeft="10dp"
-                   android:gravity="center"
-               />
-               <RadioButton
-                   android:layout_width="55dp"
-                   android:layout_height="65dp"
-                   android:drawableTop="@drawable/find_radio_button"
-                   android:text="发现"
-                   android:textSize="20sp"
-                   android:button="@null"
-                   android:layout_marginLeft="10dp"
-                   android:gravity="center"
-                   />
-               <RadioButton
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:background="@drawable/home_tab_sell_bg"
-                   android:drawableTop="@drawable/home_tab_sell_off"
-                   android:text="发布"
-                   android:textSize="20sp"
-                   android:button="@null"
-                   android:layout_marginLeft="10dp"
-                   android:gravity="center"
-                   />
-               <RadioButton
-                   android:layout_width="55dp"
-                   android:layout_height="65dp"
-                   android:drawableTop="@drawable/message_radio_button"
-                   android:text="消息"
-                   android:textSize="20sp"
-                   android:button="@null"
-                   android:layout_marginLeft="10dp"
-                   android:gravity="center"
-                   />
-               <RadioButton
-                   android:layout_width="55dp"
-                   android:layout_height="65dp"
-                   android:drawableTop="@drawable/mine_radio_button"
-                   android:text="我的"
-                   android:textSize="20sp"
-                   android:button="@null"
-                   android:layout_marginLeft="15dp"
-                   android:gravity="center"
-                   />
-               </RadioGroup>
-            </LinearLayout>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/main_radio01"
+                style="@style/RadioButtonStyle"
+                android:drawableTop="@drawable/sihuo_radio_button"
+                android:text="私货"
+                />
+
+            <RadioButton
+                android:id="@+id/main_radio02"
+                style="@style/RadioButtonStyle"
+                android:drawableTop="@drawable/find_radio_button"
+                android:text="发现"
+                android:layout_marginRight="10dp"
+                />
+
+            <RadioButton
+                android:id="@+id/main_radio03"
+                style="@style/RadioButtonStyle"
+                android:drawableTop="@drawable/home_tab_sell_off"
+                android:text="发布"
+                />
+
+            <RadioButton
+                android:id="@+id/main_radio04"
+                style="@style/RadioButtonStyle"
+                android:drawableTop="@drawable/message_radio_button"
+                android:text="消息"
+                />
+
+            <RadioButton
+                android:id="@+id/main_radio05"
+                style="@style/RadioButtonStyle"
+                android:drawableTop="@drawable/mine_radio_button"
+                android:text="我的"
+                />
+        </RadioGroup>
+    </LinearLayout>
+</LinearLayout>
 

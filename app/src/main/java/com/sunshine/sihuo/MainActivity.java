@@ -1,39 +1,55 @@
 package com.sunshine.sihuo;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.widget.RadioGroup;
+
+import com.sunshine.sihuo.fragments.FindFragment;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
+    private RadioGroup radioGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
+        radioGroup= ((RadioGroup) findViewById(R.id.main_radio));
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        // 点击监听
+        radioGroup.setOnCheckedChangeListener(this);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId){
+            case R.id.main_radio01:
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+                break;
+            case R.id.main_radio02:
+                addFragment(new FindFragment());
+                break;
+            case R.id.main_radio03:
+                break;
+            case R.id.main_radio04:
+                break;
+            case R.id.main_radio05:
+                break;
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    /**
+     * 代码加载Fragment
+     */
+    public void addFragment(Fragment fragment){
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.main_container,fragment);
+        transaction.commit();
     }
 }
