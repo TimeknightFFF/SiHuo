@@ -14,18 +14,25 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.sunshine.sihuo.R;
+import com.sunshine.sihuo.adapters.Find_GridView_Adapter;
 import com.sunshine.sihuo.beans.Banner;
 import com.sunshine.sihuo.beans.Hot_category;
+import com.sunshine.sihuo.beans.Index_Info;
+import com.sunshine.sihuo.beans.Special_topic;
 import com.sunshine.sihuo.urls.Find_Url;
 import com.sunshine.sihuo.utils.Parser_Find_list;
+import com.sunshine.sihuo.utils.Parser_find_L;
 import com.sunshine.sihuo.views.MyGridView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,6 +47,10 @@ public class FindFragment extends Fragment {
     private ImageView image01, image02, image03, image04, image05;
     private HashMap<String, List> map;
     private List<Banner> banners;
+    private List<Special_topic> specialTopic;
+
+    // 加载数据
+    private HttpUtils utils = new HttpUtils();
 
     @Nullable
     @Override
@@ -50,9 +61,13 @@ public class FindFragment extends Fragment {
         init(view);
 
         // 加载数据
+        getActivityInfo();
+
         getListInfo();
         return view;
     }
+
+
 
     private void addViewPager(List<Banner> list) {
 
@@ -68,7 +83,7 @@ public class FindFragment extends Fragment {
      */
     private void init(View view) {
         viewPager = ((ViewPager) view.findViewById(R.id.find_viewpager));
-        gridView = ((GridView) view.findViewById(R.id.find_gridView));
+        gridView = ((GridView) view.findViewById(R.id.find_grid));
         listView = ((ListView) view.findViewById(R.id.find_listView));
 
         image01 = ((ImageView) view.findViewById(R.id.find_image_01));
@@ -76,14 +91,14 @@ public class FindFragment extends Fragment {
         image03 = ((ImageView) view.findViewById(R.id.find_image_03));
         image04 = ((ImageView) view.findViewById(R.id.find_image_04));
         image05 = ((ImageView) view.findViewById(R.id.find_image_05));
+
     }
 
     /**
      * 获取网络数据,首页面有两部分的数据。一个是POST请求的数据，一个是GET请求的数据，先获取GET 请求的数据
      */
-    public void getListInfo() {
-        // 加载数据
-        HttpUtils utils = new HttpUtils();
+    public void getActivityInfo() {
+
 
         utils.send(HttpRequest.HttpMethod.GET, Find_Url.FIRST_URL, new RequestCallBack<String>() {
             @Override
@@ -100,7 +115,11 @@ public class FindFragment extends Fragment {
 
                 // TODO 加载GridView数据
                 List<Hot_category> category = map.get("hot_category");
+                addGridViewInfo(category);
 
+                // TODO 加载特殊推荐
+                specialTopic = map.get("special_topic");
+                addImageFive(specialTopic);
             }
 
             @Override
@@ -131,4 +150,67 @@ public class FindFragment extends Fragment {
         }
     }
 
+    /**
+     * GridView数据加载
+     */
+    public void addGridViewInfo(List<Hot_category> list){
+
+        gridView.setAdapter(new Find_GridView_Adapter(list,getActivity()));
+    }
+
+    /**
+     * 特殊推荐
+     */
+    public void addImageFive(List<Special_topic> list){
+
+        List<String> listOfUrl=new ArrayList<>();
+        BitmapUtils utils = new BitmapUtils(getActivity());
+
+        for(Special_topic topic:list){
+            listOfUrl.add(topic.getIcon());
+        }
+        String url="http://static.sihuo.in/"+listOfUrl.get(0);
+        utils.display(image01,url);
+
+        String url1="http://static.sihuo.in/"+listOfUrl.get(1);
+        utils.display(image03,url1);
+
+        String ur2="http://static.sihuo.in/"+listOfUrl.get(2);
+        utils.display(image04,ur2);
+
+        String ur3="http://static.sihuo.in/"+listOfUrl.get(3);
+        utils.display(image02,ur3);
+
+        String ur4="http://static.sihuo.in/"+listOfUrl.get(4);
+        utils.display(image05,ur4);
+
+    }
+
+    private void getListInfo() {
+
+        // POST请求的属性
+        RequestParams params = new RequestParams();
+
+        // type=2&key=0&top=1&
+        params.addBodyParameter("type","2");
+        params.addBodyParameter("key","0");
+        params.addBodyParameter("top","1");
+
+        utils.send(HttpRequest.HttpMethod.POST,Find_Url.LIST_URL,params,new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> objectResponseInfo) {
+
+                // TODO 解析数据
+                List<Index_Info> listInfo = Parser_find_L.getListInfo(objectResponseInfo.result);
+
+                // TODO 给ListView 添加适配器
+
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+
+            }
+        });
+    }
 }
