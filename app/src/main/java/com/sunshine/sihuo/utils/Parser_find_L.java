@@ -1,5 +1,7 @@
 package com.sunshine.sihuo.utils;
 
+import android.util.Log;
+
 import com.sunshine.sihuo.beans.Index_Info;
 
 import org.json.JSONArray;
@@ -8,6 +10,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Administrator on 2015/5/1.
@@ -34,9 +38,18 @@ public class Parser_find_L {
 
                 index.setcNum(object.getInt("cNum"));
                 index.setpNum(object.getInt("pNum"));
+                Object photo = object.get("photo");
 
-                List<String> photos= (List<String>) object.get("photo");
-                index.setPhoto(photos.get(0));
+
+                String urls = photo.toString();
+                /**
+                 * 分离出URL
+                 */
+                String url=urls.substring(urls.indexOf("/"),urls.indexOf("jpg")+3);
+                Pattern compile = Pattern.compile("\\\\");
+                Matcher matcher = compile.matcher(url);
+                String photoUrl = matcher.replaceAll("");
+                index.setPhoto(photoUrl);
 
                 list.add(index);
             }

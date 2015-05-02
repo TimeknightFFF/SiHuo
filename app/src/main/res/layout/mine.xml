@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/user"
+        style="@style/vertical_layout_weight"
+        android:layout_weight="3">
+
+        <ImageView
+            android:id="@+id/icon_default"
+            style="@style/wrap_content"
+            android:layout_margin="15dp"
+            android:src="@drawable/icon_default_avatr100" />
+
+        <TextView
+            android:id="@+id/user_name"
+            style="@style/wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/icon_default"
+            android:gravity="left"
+            android:text="@string/user_name"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:id="@+id/below_user_name"
+            style="@style/wrap_content"
+            android:layout_alignLeft="@+id/user_name"
+            android:layout_below="@+id/user_name"
+            android:layout_toRightOf="@+id/icon_default"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/trust"
+                style="@style/wrap_content"
+                android:text="@string/trust"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/trust_num"
+                style="@style/wrap_content"
+                android:layout_marginRight="3dp"
+                android:text="1"
+                android:textColor="#ff0000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/influence"
+                style="@style/wrap_content"
+                android:text="@string/influence"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/influence_num"
+                style="@style/wrap_content"
+                android:layout_marginRight="3dp"
+                android:text="1"
+                android:textColor="#ff0000"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            style="@style/wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/setting_right_arrow" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/mine_lv1"
+        style="@style/vertical_layout_weight"
+        android:layout_marginTop="20dp"
+        android:layout_weight="6" />
+
+    <ListView
+        android:id="@+id/mine_lv2"
+        style="@style/vertical_layout_weight"
+        android:layout_marginTop="20dp"
+        android:layout_weight="6" />
+
+    <RelativeLayout
+        android:id="@+id/mine_set"
+        style="@style/vertical_layout_weight"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2">
+
+        <ImageView
+            android:id="@+id/mine_set_iv"
+            style="@style/wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
+            android:src="@drawable/icon_mine_set_on" />
+
+        <TextView
+            android:id="@+id/mine_set_tv"
+            style="@style/wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
+            android:layout_toRightOf="@+id/mine_set_iv"
+            android:text="@string/setting"
+            android:textSize="18sp" />
+
+        <ImageView
+            style="@style/wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/setting_right_arrow"/>
+    </RelativeLayout>
+</LinearLayout>

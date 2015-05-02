@@ -4,5 +4,20 @@
     <string name="app_name">SiHuo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="me">我</string>
+    <string name="user_name">用户名</string>
+    <string name="trust">可信度</string>
+    <string name="influence">|影响力</string>
+    <string name="influence2">影响力</string>
+    <string name="turnover">成交量</string>
+    <string name="good">好评率</string>
+    <string name="my_main">我的主页</string>
+    <string name="my_friend">我的朋友</string>
+    <string name="my_wallet">我的钱包</string>
+    <string name="goods_selling">在卖的商品</string>
+    <string name="goods_selling2">在售商品</string>
+    <string name="goods_sold">已卖掉的商品</string>
+    <string name="goods_ping">已售评价</string>
+    <string name="goods_bought">已买到的商品</string>
+    <string name="setting">设置</string>
 </resources>
