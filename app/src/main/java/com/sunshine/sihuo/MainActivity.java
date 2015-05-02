@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.sunshine.sihuo.fragments.FindFragment;
+import com.sunshine.sihuo.fragments.PhotoFragment;
+import com.sunshine.sihuo.fragments.SiHuoFragment;
 
 
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
@@ -22,17 +24,20 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
         // 点击监听
         radioGroup.setOnCheckedChangeListener(this);
+        addFragment(new SiHuoFragment());
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId){
             case R.id.main_radio01:
+                addFragment(new SiHuoFragment());
                 break;
             case R.id.main_radio02:
                 addFragment(new FindFragment());
                 break;
             case R.id.main_radio03:
+                addFragment(new PhotoFragment());
                 break;
             case R.id.main_radio04:
                 break;

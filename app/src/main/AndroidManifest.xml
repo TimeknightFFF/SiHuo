@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sunshine.sihuo" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -16,6 +18,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".RequestFriends"
+            android:label="@string/title_activity_request_friends" >
+        </activity>
+        <activity
+            android:name=".ShowKindActivity"
+            android:label="@string/title_activity_show_kind" >
+        </activity>
+        <activity
+            android:name=".ShowMoreActivity"
+            android:label="@string/title_activity_show_more" >
         </activity>
     </application>
 

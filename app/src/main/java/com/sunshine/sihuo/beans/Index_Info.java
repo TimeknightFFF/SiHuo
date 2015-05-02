@@ -78,4 +78,18 @@ public class Index_Info {
     public void setcNum(int cNum) {
         this.cNum = cNum;
     }
+
+    @Override
+    public String toString() {
+        return "Index_Info{" +
+                "avatar='" + avatar + '\'' +
+                ", uName='" + uName + '\'' +
+                ", photo='" + photo + '\'' +
+                ", price='" + price + '\'' +
+                ", ori_price='" + ori_price + '\'' +
+                ", desc='" + desc + '\'' +
+                ", pNum=" + pNum +
+                ", cNum=" + cNum +
+                '}';
+    }
 }

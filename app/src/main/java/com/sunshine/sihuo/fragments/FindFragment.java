@@ -1,5 +1,6 @@
 package com.sunshine.sihuo.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,6 +27,8 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.sunshine.sihuo.R;
+import com.sunshine.sihuo.ShowKindActivity;
+import com.sunshine.sihuo.ShowMoreActivity;
 import com.sunshine.sihuo.adapters.Find_GridView_Adapter;
 import com.sunshine.sihuo.adapters.Find_List_Adapter;
 import com.sunshine.sihuo.beans.Banner;
@@ -44,7 +47,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/4/30.
  */
-public class FindFragment extends Fragment {
+public class FindFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private ViewPager viewPager;
     private GridView gridView;
@@ -54,17 +57,17 @@ public class FindFragment extends Fragment {
     private List<Banner> banners;
     private List<Special_topic> specialTopic;
 
-    private int index=0;
+    private int index = 0;
     /**
      * 控制ViewPager的页面跳转
      */
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if(msg.what==0){
-                viewPager.setCurrentItem(index%banners.size());
+            if (msg.what == 0) {
+                viewPager.setCurrentItem(index % banners.size());
                 index++;
-                handler.sendEmptyMessageDelayed(0,5000);
+                handler.sendEmptyMessageDelayed(0, 5000);
             }
         }
     };
@@ -78,7 +81,7 @@ public class FindFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.find, null);
 
-        listView= ((ListView) view.findViewById(R.id.find_listView));
+        listView = ((ListView) view.findViewById(R.id.find_listView));
         listView.setItemsCanFocus(true);
         // 初始化控件
 
@@ -99,7 +102,7 @@ public class FindFragment extends Fragment {
         if (banners != null) {
             viewPager.setAdapter(new ViewPagerFragment(getFragmentManager()));
 
-            handler.sendEmptyMessageDelayed(0,5000);
+            handler.sendEmptyMessageDelayed(0, 5000);
         }
     }
 
@@ -117,6 +120,8 @@ public class FindFragment extends Fragment {
         image03 = ((ImageView) view.findViewById(R.id.find_image_03));
         image04 = ((ImageView) view.findViewById(R.id.find_image_04));
         image05 = ((ImageView) view.findViewById(R.id.find_image_05));
+
+        gridView.setOnItemClickListener(this);
 
     }
 
@@ -154,6 +159,21 @@ public class FindFragment extends Fragment {
             }
         });
 
+    }
+
+    /**
+     * 思路： 点击GridView后，把相应位置的position传到新建的Activity中
+     */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = null;
+        if (position != 7) {
+            intent = new Intent(getActivity(), ShowKindActivity.class);
+        }else if(position == 7){
+            intent = new Intent(getActivity(), ShowMoreActivity.class);
+        }
+        intent.putExtra("position", position);
+        startActivity(intent);
     }
 
     /**

@@ -20,4 +20,9 @@
     <string name="goods_ping">已售评价</string>
     <string name="goods_bought">已买到的商品</string>
     <string name="setting">设置</string>
+    <string name="title_activity_request_friends">RequestFriends</string>
+    <string name="sihuo_btn">去邀请好友</string>
+    <string name="title_activity_show_kind">ShowKindActivity</string>
+    <string name="title_activity_show_more">ShowMoreActivity</string>
+
 </resources>
