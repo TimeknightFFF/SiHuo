@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imgButLeft"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#ff0000"
+            android:padding="50dp"
+            android:src="@drawable/icon_back_on" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="我的朋友"
+            android:textColor="#ffffff"
+            android:textSize="30dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="邀请全部"
+            android:textColor="#ffffff"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
