@@ -1,6 +1,8 @@
 package com.sunshine.sihuo.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,9 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
@@ -50,6 +54,21 @@ public class FindFragment extends Fragment {
     private List<Banner> banners;
     private List<Special_topic> specialTopic;
 
+    private int index=0;
+    /**
+     * 控制ViewPager的页面跳转
+     */
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if(msg.what==0){
+                viewPager.setCurrentItem(index%banners.size());
+                index++;
+                handler.sendEmptyMessageDelayed(0,5000);
+            }
+        }
+    };
+
     // 加载数据
     private HttpUtils utils = new HttpUtils();
     private View headView;
@@ -60,6 +79,7 @@ public class FindFragment extends Fragment {
         View view = inflater.inflate(R.layout.find, null);
 
         listView= ((ListView) view.findViewById(R.id.find_listView));
+        listView.setItemsCanFocus(true);
         // 初始化控件
 
         headView = View.inflate(getActivity(), R.layout.headview, null);
@@ -78,6 +98,8 @@ public class FindFragment extends Fragment {
 
         if (banners != null) {
             viewPager.setAdapter(new ViewPagerFragment(getFragmentManager()));
+
+            handler.sendEmptyMessageDelayed(0,5000);
         }
     }
 
@@ -160,6 +182,7 @@ public class FindFragment extends Fragment {
     public void addGridViewInfo(List<Hot_category> list) {
 
         gridView.setAdapter(new Find_GridView_Adapter(list, getActivity()));
+
     }
 
     /**
@@ -212,6 +235,7 @@ public class FindFragment extends Fragment {
                 listView.addHeaderView(headView);
                 // TODO 给ListView 添加适配器
                 listView.setAdapter(new Find_List_Adapter(getActivity(), listInfo));
+
             }
 
             @Override

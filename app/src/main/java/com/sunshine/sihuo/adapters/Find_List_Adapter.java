@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
@@ -64,8 +65,8 @@ public class Find_List_Adapter extends BaseAdapter {
         Index_Info info = list.get(position);
 
         holder.userName.setText(info.getuName());
-        holder.commonNum.setText(info.getcNum()+"");
-        holder.loveNum.setText(info.getpNum()+"");
+//        holder.commonNum.setText(info.getcNum()+"");
+//        holder.loveNum.setText(info.getpNum()+"");
         holder.desc.setText(info.getDesc());
         holder.pre.setText(info.getOri_price());
         holder.price.setText(info.getPrice());
@@ -95,6 +96,16 @@ public class Find_List_Adapter extends BaseAdapter {
             utils.display(holder.image02,photoUrl);
         }
 
+        /**
+         * 设置按钮的点击事件
+         */
+        convertView.findViewById(R.id.item_list_btn_love).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"ListView中条目自控件的点击事件",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return convertView;
     }
 
@@ -110,8 +121,8 @@ public class Find_List_Adapter extends BaseAdapter {
             userName= ((TextView) itemView.findViewById(R.id.item_list_name));
             price= ((TextView) itemView.findViewById(R.id.item_list_price));
             pre= ((TextView) itemView.findViewById(R.id.item_list_pre));
-            loveNum= ((TextView) itemView.findViewById(R.id.item_list_love_num));
-            commonNum= ((TextView) itemView.findViewById(R.id.item_list_common_num));
+//            loveNum= ((TextView) itemView.findViewById(R.id.item_list_love_num));
+//            commonNum= ((TextView) itemView.findViewById(R.id.item_list_common_num));
             desc= ((TextView) itemView.findViewById(R.id.item_list_content));
         }
     }

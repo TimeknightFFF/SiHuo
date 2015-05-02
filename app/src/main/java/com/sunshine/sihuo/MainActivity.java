@@ -28,7 +28,6 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId){
             case R.id.main_radio01:
-
                 break;
             case R.id.main_radio02:
                 addFragment(new FindFragment());
