@@ -23,6 +23,8 @@ public class Show_GridView_Adapter extends BaseAdapter {
     private List<Index_Info> list;
     private Context context;
 
+    private String headStr = "http://static.sihuo.in/";
+
     public Show_GridView_Adapter(List<Index_Info> list, Context context) {
         this.list = list;
         this.context = context;
@@ -61,7 +63,8 @@ public class Show_GridView_Adapter extends BaseAdapter {
 
         String infoPhoto = info.getPhoto();
         if(infoPhoto!=null) {
-            String photoUrl="http://static.sihuo.in/"+ infoPhoto;
+            String photoUrl=getImageUrl(infoPhoto);
+            if(photoUrl.length()>headStr.length())
             new BitmapUtils(context).display(holder.image,photoUrl);
         }
 
@@ -78,6 +81,17 @@ public class Show_GridView_Adapter extends BaseAdapter {
 
             image= ((ImageView) itemView.findViewById(R.id.kind_item_image));
         }
+    }
+
+    public String getImageUrl(String icon) {
+
+        StringBuffer buffer = new StringBuffer();
+
+        buffer.append(headStr);
+        buffer.append(icon);
+
+        String string = buffer.toString();
+        return string;
     }
 
 }

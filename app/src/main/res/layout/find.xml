@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#ffff2521">
-        <TextView
+
+        <SearchView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="7"
-            android:text="发现"
+            android:queryHint="请输入要搜索商品的关键字"
+            android:gravity="center"
+
             android:textColor="#fff"
             android:textSize="28sp"
-            android:gravity="center"
-            android:layout_gravity="center_vertical"
             />
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/find_imagebutton"
-            android:button="@null"
-            android:background="#ffff2521"
             android:layout_gravity="center_vertical"
-            />
-        </LinearLayout>
+            android:layout_weight="1"
+            android:background="#ffff2521"
+            android:button="@null"
+            android:src="@drawable/find_imagebutton" />
+    </LinearLayout>
+
     <ListView
+        android:id="@+id/find_listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:divider="#00000000"
-        android:dividerHeight="18dp"
-        android:id="@+id/find_listView"></ListView>
+      ></ListView>
+
 
 </LinearLayout>

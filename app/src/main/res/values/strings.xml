@@ -24,5 +24,15 @@
     <string name="sihuo_btn">去邀请好友</string>
     <string name="title_activity_show_kind">ShowKindActivity</string>
     <string name="title_activity_show_more">ShowMoreActivity</string>
+    <string name="title_activity_comment">CommentActivity</string>
+    <string name="title_activity_good">GoodActivity</string>
+    <string name="title_activity_mine_name_info">MineNameInfoActivity</string>
+    <string name="title_activity_my_page">MyPageActivity</string>
+    <string name="title_activity_my_purse">MyPurseActivity</string>
+    <string name="title_activity_my_sale">MySaleActivity</string>
+    <string name="title_activity_my_sale_out">MySaleOutActivity</string>
+    <string name="title_activity_my_buy">MyBuyActivity</string>
+    <string name="title_activity_my_setting">MySettingActivity</string>
+    <string name="title_activity_my_friend">MyFriendActivity</string>
 
 </resources>

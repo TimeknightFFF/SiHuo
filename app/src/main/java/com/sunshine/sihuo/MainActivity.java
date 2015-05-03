@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.sunshine.sihuo.fragments.FindFragment;
+import com.sunshine.sihuo.fragments.MessageFragment;
+import com.sunshine.sihuo.fragments.MyFragment;
 import com.sunshine.sihuo.fragments.PhotoFragment;
 import com.sunshine.sihuo.fragments.SiHuoFragment;
 
@@ -40,8 +42,10 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
                 addFragment(new PhotoFragment());
                 break;
             case R.id.main_radio04:
+                addFragment(new MessageFragment());
                 break;
             case R.id.main_radio05:
+                addFragment(new MyFragment());
                 break;
         }
     }

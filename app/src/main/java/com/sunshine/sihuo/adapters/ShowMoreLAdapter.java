@@ -22,6 +22,8 @@ public class ShowMoreLAdapter extends BaseAdapter {
     private Context context;
     private List<MoreBeans> list;
 
+    private String headStr = "http://static.sihuo.in/";
+
     public ShowMoreLAdapter(Context context, List<MoreBeans> list) {
         this.context = context;
         this.list = list;
@@ -71,7 +73,8 @@ public class ShowMoreLAdapter extends BaseAdapter {
         String image = moreBeans.getImage();
 
         if(image!=null){
-            String imageUrl = "http://static.sihuo.in/"+image;
+            String imageUrl = getImageUrl(image);
+            if(imageUrl.length()>headStr.length())
             utils.display(holder.imageView,imageUrl);
         }
 
@@ -104,5 +107,16 @@ public class ShowMoreLAdapter extends BaseAdapter {
             names[4] = name05;
             names[5] = name06;
         }
+    }
+
+    public String getImageUrl(String icon) {
+
+        StringBuffer buffer = new StringBuffer();
+
+        buffer.append(headStr);
+        buffer.append(icon);
+
+        String string = buffer.toString();
+        return string;
     }
 }

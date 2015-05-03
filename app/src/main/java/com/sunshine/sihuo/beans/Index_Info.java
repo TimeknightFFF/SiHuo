@@ -14,6 +14,7 @@ public class Index_Info {
 
     private int pNum;
     private int cNum;
+    private int goods_id;
 
     public String getuName() {
         return uName;
@@ -77,6 +78,14 @@ public class Index_Info {
 
     public void setcNum(int cNum) {
         this.cNum = cNum;
+    }
+
+    public int getGoods_id() {
+        return goods_id;
+    }
+
+    public void setGoods_id(int goods_id) {
+        this.goods_id = goods_id;
     }
 
     @Override

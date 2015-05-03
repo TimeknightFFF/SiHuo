@@ -31,6 +31,48 @@
             android:name=".ShowMoreActivity"
             android:label="@string/title_activity_show_more" >
         </activity>
+        <activity android:name=".LV_Info" />
+        <activity android:name=".Vp_WebView" />
+        <activity
+            android:name=".CommentActivity"
+            android:label="@string/title_activity_comment" >
+        </activity>
+        <activity
+            android:name=".GoodActivity"
+            android:label="@string/title_activity_good" >
+        </activity>
+        <activity
+            android:name=".MineNameInfoActivity"
+            android:label="@string/title_activity_mine_name_info" >
+        </activity>
+        <activity
+            android:name=".MyPageActivity"
+            android:label="@string/title_activity_my_page" >
+        </activity>
+        <activity
+            android:name=".MyPurseActivity"
+            android:label="@string/title_activity_my_purse" >
+        </activity>
+        <activity
+            android:name=".MySaleActivity"
+            android:label="@string/title_activity_my_sale" >
+        </activity>
+        <activity
+            android:name=".MySaleOutActivity"
+            android:label="@string/title_activity_my_sale_out" >
+        </activity>
+        <activity
+            android:name=".MyBuyActivity"
+            android:label="@string/title_activity_my_buy" >
+        </activity>
+        <activity
+            android:name=".MySettingActivity"
+            android:label="@string/title_activity_my_setting" >
+        </activity>
+        <activity
+            android:name=".MyFriendActivity"
+            android:label="@string/title_activity_my_friend" >
+        </activity>
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.sunshine.sihuo.LV_Info;
 import com.sunshine.sihuo.R;
 import com.sunshine.sihuo.ShowKindActivity;
 import com.sunshine.sihuo.ShowMoreActivity;
@@ -187,7 +188,7 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
 
         @Override
         public Fragment getItem(int position) {
-            return Find_ViewPager_Fragment.newInstance(banners.get(position).getSrc());
+            return Find_ViewPager_Fragment.newInstance(banners.get(position).getSrc(), banners.get(position).getUrl());
         }
 
         @Override
@@ -256,9 +257,19 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
                 // TODO 给ListView 添加适配器
                 listView.setAdapter(new Find_List_Adapter(getActivity(), listInfo));
 
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Intent intent = new Intent(getActivity(), LV_Info.class);
+                        Bundle bundle=new Bundle();
+                        bundle.putInt("position",i-1);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
             }
 
-            @Override
+        @Override
             public void onFailure(HttpException e, String s) {
 
             }

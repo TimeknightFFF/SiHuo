@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.sunshine.sihuo.CommentActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff0000"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/commet_iv"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_back_on"
+
+            />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+
+            android:layout_weight="3"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="在卖的商品"
+
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+
+
+        android:orientation="vertical">
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:background="@drawable/load_failed_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="还没有人评价过你的商品" />
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"></ListView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

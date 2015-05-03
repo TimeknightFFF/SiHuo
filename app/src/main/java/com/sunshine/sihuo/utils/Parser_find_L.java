@@ -38,6 +38,7 @@ public class Parser_find_L {
 
                 index.setcNum(object.getInt("cNum"));
                 index.setpNum(object.getInt("pNum"));
+                index.setGoods_id(object.getInt("id"));
                 Object photo = object.get("photo");
 
 

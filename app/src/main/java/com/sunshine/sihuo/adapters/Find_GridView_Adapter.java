@@ -17,10 +17,12 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/5/1.
  */
-public class Find_GridView_Adapter extends BaseAdapter{
+public class Find_GridView_Adapter extends BaseAdapter {
 
     private List<Hot_category> list;
     private Context context;
+
+    private String headStr = "http://static.sihuo.in/";
 
     public Find_GridView_Adapter(List<Hot_category> list, Context context) {
         this.list = list;
@@ -46,31 +48,47 @@ public class Find_GridView_Adapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView= LayoutInflater.from(context).inflate(R.layout.find_item_gridview,null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.find_item_gridview, null);
             convertView.setTag(new ViewHolder(convertView));
         }
-        ViewHolder holder= ((ViewHolder) convertView.getTag());
+        ViewHolder holder = ((ViewHolder) convertView.getTag());
 
         Hot_category category = list.get(position);
         holder.textView.setText(category.getName());
 
         // 图片网址不完整，需要添加头部
-        String url="http://static.sihuo.in/"+category.getIcon();
+        String url = getImageUrl(category.getIcon());
 
-        BitmapUtils utils=new BitmapUtils(context);
-        utils.display(holder.imageView,url);
+        if (url.length() > headStr.length()) {
+            BitmapUtils utils = new BitmapUtils(context);
+            utils.display(holder.imageView, url);
+        }
 
         return convertView;
     }
 
-    public class ViewHolder{
+    public class ViewHolder {
 
         private ImageView imageView;
         private TextView textView;
 
         public ViewHolder(View itemView) {
-            imageView= ((ImageView) itemView.findViewById(R.id.item_gridview_image));
-            textView= ((TextView) itemView.findViewById(R.id.item_gridview_title));
+            imageView = ((ImageView) itemView.findViewById(R.id.item_gridview_image));
+            textView = ((TextView) itemView.findViewById(R.id.item_gridview_title));
         }
+    }
+
+    /**
+     * 获取完整的图片网络地址
+     */
+    public String getImageUrl(String icon) {
+
+        StringBuffer buffer = new StringBuffer();
+
+        buffer.append(headStr);
+        buffer.append(icon);
+
+        String string = buffer.toString();
+        return string;
     }
 }
