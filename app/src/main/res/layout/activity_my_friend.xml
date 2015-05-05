@@ -8,10 +8,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ffff2521">
+        android:background="#ffff2521"
+        android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/mine_friend_info_iv"
+            android:id="@+id/mine_friend_info_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -49,27 +50,27 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-
-
                     >
 
                     <ImageView
+                        android:layout_margin="5dp"
                         android:id="@+id/mine_friend_info_iv1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="36dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_comment_people" />
+                        android:src="@drawable/icon_new_friend" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/mine_friend_info_iv1"
+                        android:layout_centerVertical="true"
                         android:text="新的朋友" />
 
                 </RelativeLayout>
@@ -80,6 +81,7 @@
                     android:background="#55030204" />
 
                 <RelativeLayout
+                    android:id="@+id/mine_friend_info_add"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -88,21 +90,26 @@
 
                     <ImageView
                         android:id="@+id/mine_friend_info_iv2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="36dp"
+                        android:layout_margin="5dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_comment_people" />
+                        android:src="@drawable/icon_people_knows" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/mine_friend_info_iv2"
-                        android:text="新的朋友" />
+                        android:layout_centerVertical="true"
+                        android:text="可能认识的人" />
 
                 </RelativeLayout>
 
 
             </LinearLayout>
-
+            <ListView
+                android:id="@+id/mine_friend_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"></ListView>
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="30dp"
@@ -113,7 +120,7 @@
             <ListView
                 android:id="@+id/mine_friend_info_lv"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"></ListView>
+                android:layout_height="wrap_content"></ListView>
         </LinearLayout>
     </ScrollView>
 

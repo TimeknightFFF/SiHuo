@@ -36,6 +36,7 @@ import com.sunshine.sihuo.beans.Banner;
 import com.sunshine.sihuo.beans.Hot_category;
 import com.sunshine.sihuo.beans.Index_Info;
 import com.sunshine.sihuo.beans.Special_topic;
+import com.sunshine.sihuo.fiveimages.ImageView01;
 import com.sunshine.sihuo.urls.Find_Url;
 import com.sunshine.sihuo.utils.Parser_Find_list;
 import com.sunshine.sihuo.utils.Parser_find_L;
@@ -48,7 +49,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/4/30.
  */
-public class FindFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class FindFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
 
     private ViewPager viewPager;
     private GridView gridView;
@@ -57,6 +58,7 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
     private HashMap<String, List> map;
     private List<Banner> banners;
     private List<Special_topic> specialTopic;
+    private ImageView[] images = new ImageView[5];
 
     private int index = 0;
     /**
@@ -122,6 +124,12 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
         image04 = ((ImageView) view.findViewById(R.id.find_image_04));
         image05 = ((ImageView) view.findViewById(R.id.find_image_05));
 
+        image01.setOnClickListener(this);
+        image02.setOnClickListener(this);
+        image03.setOnClickListener(this);
+        image04.setOnClickListener(this);
+        image05.setOnClickListener(this);
+
         gridView.setOnItemClickListener(this);
 
     }
@@ -175,6 +183,42 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
         }
         intent.putExtra("position", position);
         startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        Intent intent = null;
+
+        switch (view.getId()) {
+
+            case R.id.find_image_01:
+                intent = new Intent(getActivity(), ImageView01.class);
+                intent.putExtra("Position", 0);
+                startActivity(intent);
+                break;
+            case R.id.find_image_02:
+                intent = new Intent(getActivity(), ImageView01.class);
+                intent.putExtra("Position", 1);
+                startActivity(intent);
+
+                break;
+            case R.id.find_image_03:
+                intent = new Intent(getActivity(), ImageView01.class);
+                intent.putExtra("Position", 2);
+                startActivity(intent);
+                break;
+            case R.id.find_image_04:
+                intent = new Intent(getActivity(), ImageView01.class);
+                intent.putExtra("Position", 3);
+                startActivity(intent);
+                break;
+            case R.id.find_image_05:
+                intent = new Intent(getActivity(), ImageView01.class);
+                intent.putExtra("Position", 4);
+                startActivity(intent);
+                break;
+        }
     }
 
     /**

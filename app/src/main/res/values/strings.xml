@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">SiHuo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -34,5 +33,9 @@
     <string name="title_activity_my_buy">MyBuyActivity</string>
     <string name="title_activity_my_setting">MySettingActivity</string>
     <string name="title_activity_my_friend">MyFriendActivity</string>
-
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_image_view01">ImageView01</string>
+    <string name="title_activity_gv__info">GV_Info</string>
 </resources>

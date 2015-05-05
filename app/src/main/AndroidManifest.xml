@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -73,6 +73,35 @@
             android:name=".MyFriendActivity"
             android:label="@string/title_activity_my_friend" >
         </activity>
+
+        <service
+            android:name=".chatpackage.ChatService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name=".chatpackage.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".chatpackage.RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".chatpackage.ChatActivity"
+            android:label="@string/title_activity_chat" >
+        </activity>
+        <activity
+            android:name=".fiveimages.ImageView01"
+            android:label="@string/title_activity_image_view01" ></activity>
+        <activity android:name=".fiveimages.Five_Image" />
+        <activity
+            android:name=".views.GV_Info"
+            android:label="@string/title_activity_gv__info" >
+        </activity>
+        <activity android:name=".ShowMore_LV_Activity"/>
+        <activity android:name=".More_Kind_Activity"/>
     </application>
 
 </manifest>

@@ -6,44 +6,51 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="#ffff2521"
         android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ffff2521"
+            android:button="@null"
+            />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_weight="7"
+            android:layout_weight="4"
             android:gravity="center"
+            android:layout_gravity="center_vertical"
             android:text="朋友"
+            android:layout_marginTop="5dp"
             android:textColor="#fff"
             android:textSize="28sp" />
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:background="#ffff2521"
             android:button="@null"
-            android:src="@drawable/icon_amount_add"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_add_off"
             android:id="@+id/request_btn_add" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:orientation="vertical"
-
         android:paddingTop="80dp"
-
         >
 
         <ImageView
             android:id="@+id/sihuo_tv"
             android:layout_gravity="center"
-
             android:layout_width="wrap_content"
             android:scaleType="fitXY"
             android:layout_height="wrap_content"
@@ -53,11 +60,11 @@
         <Button
             android:id="@+id/sihuo_btn"
             android:layout_width="150dp"
-           android:layout_marginTop="30dp"
+            android:layout_marginTop="30dp"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
             android:background="#fffff32c"
-            android:gravity="center_horizontal"
+
 
             android:text="@string/sihuo_btn"
             android:textColor="#ff0000"

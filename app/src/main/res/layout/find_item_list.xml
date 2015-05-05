@@ -2,19 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_margin="10dp"
         android:background="@drawable/list_shape"
         android:orientation="vertical"
         android:padding="4dp"
-
         >
 
         <LinearLayout
@@ -43,7 +40,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="270dp"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="7dp"
             android:orientation="horizontal">
@@ -61,28 +58,56 @@
             android:layout_height="35dp">
 
             <TextView
-                android:id="@+id/item_list_price"
+                android:id="@+id/item_list_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:text="￥450.00"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="￥"
                 android:textColor="#ff0000"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/item_list_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/item_list_icon"
+                android:text="450.00"
+                android:textColor="#ff0000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/item_list_icon1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/item_list_price"
+                android:text="￥"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/item_list_price"
+                android:background="#000000" />
 
             <TextView
                 android:id="@+id/item_list_pre"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_toRightOf="@+id/item_list_price"
+                android:layout_toRightOf="@+id/item_list_icon1"
                 android:gravity="center_vertical"
-                android:text="￥699.00"
+                android:text="699.00"
                 android:textSize="15sp" />
 
             <View
-                android:layout_width="60dp"
+                android:layout_width="50dp"
                 android:layout_height="1dp"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/item_list_price"
+                android:layout_toRightOf="@+id/item_list_icon1"
                 android:background="#000000" />
         </RelativeLayout>
 
@@ -93,13 +118,19 @@
             android:orientation="horizontal">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#C0C0C0"
+                android:text="几乎全新"
+                android:textSize="10sp" />
+
+            <TextView
                 android:id="@+id/item_list_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
                 android:lines="2"
                 android:text="FFF"
-                android:textSize="20sp" />
+                android:textSize="10sp" />
         </LinearLayout>
 
         <View
@@ -110,23 +141,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:descendantFocusability="blocksDescendants"
+
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#ffe8e6ff"
+                android:background="#fff"
                 android:gravity="center_horizontal|center_vertical"
 
                 android:orientation="horizontal">
 
-                <ImageButton
+                <CheckBox
                     android:id="@+id/item_list_btn_love"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/icon_love" />
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/dianzan"
+                    android:button="@null"
+                    android:focusable="false" />
 
                 <TextView
                     android:id="@+id/item_list_love_num"
@@ -145,16 +178,15 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#ffe8e6ff"
-
+                android:background="#fff"
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/lv_item_list_btn1"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/icon_comment_people" />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/pinglun" />
 
                 <TextView
                     android:id="@+id/item_list_common_num"
@@ -172,23 +204,22 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#ffe8e6ff"
+                android:background="#fff"
 
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/lv_item_list_btn2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icon_share_off" />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/fengxiang" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="分享" />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.sunshine.sihuo;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.content.ContentResolver;
@@ -7,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.Contacts;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class RequestFriends extends ActionBarActivity {
+public class RequestFriends extends Activity {
 
     private String[] columns = { // 查询Content Provider时希望返回的列
             Contacts.People._ID, Contacts.People.NAME,};
@@ -27,6 +29,7 @@ public class RequestFriends extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.requestfriend);
 
         lv = (ListView) findViewById(R.id.requestfriend_lv);

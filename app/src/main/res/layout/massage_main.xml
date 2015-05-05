@@ -9,7 +9,8 @@
     <TextView
 
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
 
         android:layout_gravity="center_vertical"
         android:background="#ff0000"
@@ -21,7 +22,8 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:id="@+id/msg_rl1"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="5dp">
 
         <ImageView
@@ -58,8 +60,8 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:id="@+id/msg_rl2"
-        android:layout_height="60dp"
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="5dp">
 
         <ImageView
@@ -96,7 +98,8 @@
     <ListView
         android:id="@+id/msg_lv"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></ListView>
+        android:layout_height="0dp"
+        android:layout_weight="7"></ListView>
 
 
 </LinearLayout>

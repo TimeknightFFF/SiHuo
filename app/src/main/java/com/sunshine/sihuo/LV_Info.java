@@ -1,10 +1,12 @@
 package com.sunshine.sihuo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.sunshine.sihuo.beans.Index_Info;
+import com.sunshine.sihuo.chatpackage.ChatActivity;
 import com.sunshine.sihuo.urls.Find_Url;
 import com.sunshine.sihuo.utils.Parser_find_L;
 
@@ -25,18 +28,22 @@ import java.util.List;
 /**
  * 商品详情
  */
-public class LV_Info extends ActionBarActivity {
+public class LV_Info extends Activity implements View.OnClickListener {
     private ImageView lv_item_info_iv1, lv_item_info_back;
     private TextView lv_item_info_name, lv_item_list_price,
             lv_item_list_content, lv_item_info_price, lv_item_info_good, lv_item_info_number;
 
-    private ImageView lv_item_list_image;
+    private ImageView lv_item_list_image,image;
     private ImageButton lv_item_list_btn2;
     //评论
+
+    // 聊天的会话
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lv__info);
 
         initView();
@@ -63,6 +70,9 @@ public class LV_Info extends ActionBarActivity {
                 finish();
             }
         });
+
+        image = ((ImageView) findViewById(R.id.lv_item_info_iv));
+        image.setOnClickListener(this);
     }
 
     //显示listViewList的数据
@@ -147,4 +157,17 @@ public class LV_Info extends ActionBarActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+        if(MainActivity.userJID != null){
+            String userJID = MainActivity.userJID;
+            Log.v("IMAGE",userJID);
+
+            // 开启聊天会话界面
+            Intent intent = new Intent(this, ChatActivity.class);
+            intent.putExtra("userJID",userJID);
+            startActivity(intent);
+        }
+    }
 }

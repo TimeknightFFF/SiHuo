@@ -1,5 +1,6 @@
 package com.sunshine.sihuo;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -17,11 +18,15 @@ import com.sunshine.sihuo.fragments.SiHuoFragment;
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup radioGroup;
+    public static String userJID=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        userJID=intent.getStringExtra("userJID");
         radioGroup= ((RadioGroup) findViewById(R.id.main_radio));
 
         // 点击监听
