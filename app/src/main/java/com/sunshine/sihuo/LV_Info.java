@@ -2,6 +2,7 @@ package com.sunshine.sihuo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,7 @@ import java.util.List;
 /**
  * 商品详情
  */
-public class LV_Info extends Activity implements View.OnClickListener {
+public class LV_Info extends FragmentActivity implements View.OnClickListener {
     private ImageView lv_item_info_iv1, lv_item_info_back;
     private TextView lv_item_info_name, lv_item_list_price,
             lv_item_list_content, lv_item_info_price, lv_item_info_good, lv_item_info_number;

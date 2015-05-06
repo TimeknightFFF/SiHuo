@@ -1,6 +1,7 @@
 package com.sunshine.sihuo;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.view.Window;
 
 
-public class GoodActivity extends Activity {
+public class GoodActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

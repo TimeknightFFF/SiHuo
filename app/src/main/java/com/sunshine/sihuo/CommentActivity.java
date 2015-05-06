@@ -1,6 +1,7 @@
 package com.sunshine.sihuo;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +11,7 @@ import android.view.Window;
 import android.widget.ImageView;
 
 
-public class CommentActivity extends Activity {
+public class CommentActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,5 @@ public class CommentActivity extends Activity {
             }
         });
     }
-
 
 }

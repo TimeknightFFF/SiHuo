@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.IBinder;
 import android.provider.Contacts;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class MyFriendActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener, ServiceConnection {
+public class MyFriendActivity extends FragmentActivity implements View.OnClickListener, AdapterView.OnItemClickListener, ServiceConnection {
     private ListView lv;
 
     private String[] columns = { // 查询Content Provider时希望返回的列

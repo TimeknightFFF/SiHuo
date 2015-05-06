@@ -3,6 +3,7 @@ package com.sunshine.sihuo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,7 +25,7 @@ import java.util.List;
 /**
  * Created by PLJ on 2015/5/5.
  */
-public class ShowMore_LV_Activity extends Activity {
+public class ShowMore_LV_Activity extends FragmentActivity {
 
     private ImageView lv_item_info_iv1, lv_item_info_back;
     private TextView lv_item_info_name, lv_item_list_price,
