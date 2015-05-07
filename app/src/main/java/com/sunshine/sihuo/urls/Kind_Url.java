@@ -10,7 +10,8 @@ public class Kind_Url {
 
     public static List<String> urlStr = new ArrayList<>();
     public static List<String> imgStr = new ArrayList<>();
-    public static List<String> MoreStr=new ArrayList<>();
+    public static List<String> MoreStr = new ArrayList<>();
+    public static List<String> publish = new ArrayList<>();
 
     public static String Phone_Url = "http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&offset=0&category=1&sort=pub_ts_desc&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0";
 
@@ -33,10 +34,24 @@ public class Kind_Url {
     public static String Image4_Url = "http://www.sihuo.com/?c=Goods&a=getClassList&tag=qm_goods_bcj_list&top=0&token=MTQzMDM3NzY1OHyE0XI7FWUxEPWeeQxjsJHt%2F0daV5keLSSt28KOx9T6EQ%3D%3D&Dalvik/1.6.0";
     public static String Image2_Url = "http://www.sihuo.com/?c=Goods&a=getClassList&tag=qm_goods_mmbb_list&top=0&token=MTQzMDM3NzY1OHyE0XI7FWUxEPWeeQxjsJHt%2F0daV5keLSSt28KOx9T6EQ%3D%3D&Dalvik/1.6.0";
     public static String Image5_Url = "http://www.sihuo.com/?c=Goods&a=getClassList&tag=qm_goods_qxth_list&top=0&token=MTQzMDM3NzY1OHyE0XI7FWUxEPWeeQxjsJHt%2F0daV5keLSSt28KOx9T6EQ%3D%3D&Dalvik/1.6.0";
-    static{
-        for ( int i=1;i<=20;i++){
+    public static String newPrice = "http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&price_min=100&category=1&sort=price_asc&offset=0&condition=1&price_max=2000&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0";
+    public static String halfPrice = "http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&price_min=200&category=1&sort=price_asc&offset=0&condition=1,3&price_max=4000&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0";
+    public static String oldPrice = "http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&price_min=200&category=1&sort=price_asc&offset=0&condition=4&price_max=4000&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0 ";
 
-         String More_Info="http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&offset=0&category="+i+"&sort=pub_ts_desc&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0";
+    static {
+        for (int i = 1; i <= 20; i++) {
+
+            String More_Info = "http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&offset=0&category=" + i + "&sort=pub_ts_desc&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0";
+
+            for (int j = 1; j <= 3; j++) {
+                String lowPrice = "http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&offset=0&category=" + i + "&sort=price_asc&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0";
+                String desPrice = "http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&offset=0&category=" + i + "&discount=desc&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0";
+                String distance = "http://www.sihuo.com/?c=search&v=1.3.4&os=android&limit=20&point=40.037154,116.369926&distance=asc&category=" + i + "&offset=0&token=MTQzMDM2MTE5OXy8JmoibOy65tPvK%2BU%2FsXDgU7Jv2xhCDL4JpsI5pzayjg%3D%3D&Dalvik/1.6.0";
+
+                publish.add(lowPrice);
+                publish.add(desPrice);
+                publish.add(distance);
+            }
             MoreStr.add(More_Info);
         }
 
@@ -56,5 +71,6 @@ public class Kind_Url {
         imgStr.add(Image3_Url);
         imgStr.add(Image4_Url);
         imgStr.add(Image5_Url);
+
     }
 }

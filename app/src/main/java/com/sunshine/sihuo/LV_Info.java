@@ -23,6 +23,7 @@ import com.sunshine.sihuo.beans.Index_Info;
 import com.sunshine.sihuo.chatpackage.ChatActivity;
 import com.sunshine.sihuo.urls.Find_Url;
 import com.sunshine.sihuo.utils.Parser_find_L;
+import com.sunshine.sihuo.utils.SysApplication;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class LV_Info extends FragmentActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lv__info);
-
+        SysApplication.getInstance().addActivity(this);
         initView();
         getListInfo();
 
@@ -162,6 +163,10 @@ public class LV_Info extends FragmentActivity implements View.OnClickListener {
     public void onClick(View v) {
 
         if(MainActivity.userJID != null){
+            /**
+             * 点击按钮，把用户的userJID传送到ChatActivity 就可以聊天了。现在没有完善，
+             * 只是完成了，自己和自己聊天，自己和好友聊天
+             */
             String userJID = MainActivity.userJID;
             Log.v("IMAGE",userJID);
 

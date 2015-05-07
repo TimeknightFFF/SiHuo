@@ -37,6 +37,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/show_kind_btn1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -55,6 +56,7 @@
 
 
         <Button
+            android:id="@+id/show_kind_btn2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -73,12 +75,13 @@
 
 
         <Button
+            android:id="@+id/show_kind_btn3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:drawableRight="@drawable/search_filter_arrow_up"
             android:background="#fff"
+            android:drawableRight="@drawable/search_filter_arrow_up"
             android:paddingRight="10dp"
             android:text="筛选" />
     </LinearLayout>
@@ -89,14 +92,14 @@
         android:background="#C0C0C0" />
 
 
-        <com.handmark.pulltorefresh.library.PullToRefreshGridView xmlns:ptr="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/show_kind_grid"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7"
-            android:horizontalSpacing="5dp"
-            android:numColumns="2"
-            ptr:ptrAnimationStyle="rotate"
-            ptr:ptrDrawable="@drawable/refresh"></com.handmark.pulltorefresh.library.PullToRefreshGridView>
+    <com.handmark.pulltorefresh.library.PullToRefreshGridView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/show_kind_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:horizontalSpacing="5dp"
+        android:numColumns="2"
+        ptr:ptrAnimationStyle="rotate"
+        ptr:ptrDrawable="@drawable/refresh"></com.handmark.pulltorefresh.library.PullToRefreshGridView>
 
 </LinearLayout>

@@ -43,13 +43,13 @@
 
                 <ImageView
                     android:id="@+id/mine_iv1"
-                    style="@style/wrap_content"
+                    style="@style/wrap_content2"
                     android:layout_margin="15dp"
                     android:src="@drawable/icon_default_avatr100" />
 
                 <TextView
                     android:id="@+id/mine_tv1"
-                    style="@style/wrap_content"
+                    style="@style/wrap_content2"
                     android:layout_margin="10dp"
                     android:layout_toRightOf="@+id/mine_iv1"
                     android:gravity="left"
@@ -59,20 +59,20 @@
 
                 <TextView
                     android:id="@+id/mine_tv2"
-                    style="@style/wrap_content"
+                    style="@style/wrap_content2"
                     android:layout_below="@+id/mine_tv1"
                     android:layout_toRightOf="@+id/mine_iv1"
                     android:text="私货号:" />
 
                 <TextView
-                    style="@style/wrap_content"
+                    style="@style/wrap_content2"
                     android:layout_below="@id/mine_tv1"
                     android:layout_toRightOf="@+id/mine_tv2"
                     android:text="9892719" />
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:paddingRight="10dp"
@@ -89,12 +89,7 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
-
                 android:orientation="horizontal">
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:text="可信度" />
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
@@ -157,7 +152,7 @@
                         android:src="@drawable/home_tab_mine_off" />
 
                     <TextView
-                        style="@style/wrap_content"
+                        style="@style/wrap_content2"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/mine_page_iv"
                         android:text="我的主页"
@@ -168,9 +163,10 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/icon_right_arrow" />
 
                 </RelativeLayout>
@@ -195,7 +191,7 @@
                         android:src="@drawable/icon_friend_m" />
 
                     <TextView
-                        style="@style/wrap_content"
+                        style="@style/wrap_content2"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@id/mine_friend_iv1"
                         android:text="我的朋友"
@@ -206,9 +202,10 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/icon_right_arrow" />
 
                 </RelativeLayout>
@@ -229,10 +226,10 @@
                         android:layout_width="40dp"
                         android:layout_height="50dp"
                         android:padding="10dp"
-                        android:src="@drawable/home_tab_mine_off" />
+                        android:src="@drawable/icon_wallet" />
 
                     <TextView
-                        style="@style/wrap_content"
+                        style="@style/wrap_content2"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/mine_purse_iv"
                         android:text="我的钱包"
@@ -243,9 +240,10 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/icon_right_arrow" />
 
                 </RelativeLayout>
@@ -275,10 +273,10 @@
                         android:layout_width="40dp"
                         android:layout_height="50dp"
                         android:padding="10dp"
-                        android:src="@drawable/home_tab_mine_off" />
+                        android:src="@drawable/icon_order" />
 
                     <TextView
-                        style="@style/wrap_content"
+                        style="@style/wrap_content2"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/msg_sole_iv"
                         android:text="在卖商品"
@@ -289,9 +287,10 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/icon_right_arrow" />
 
                 </RelativeLayout>
@@ -313,10 +312,10 @@
                         android:layout_width="40dp"
                         android:layout_height="50dp"
                         android:padding="10dp"
-                        android:src="@drawable/icon_friend_m" />
+                        android:src="@drawable/icon_product" />
 
                     <TextView
-                        style="@style/wrap_content"
+                        style="@style/wrap_content2"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@id/mine_friend_iv"
                         android:text="已卖掉的商品"
@@ -327,9 +326,10 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/icon_right_arrow" />
 
                 </RelativeLayout>
@@ -350,10 +350,10 @@
                         android:layout_width="40dp"
                         android:layout_height="50dp"
                         android:padding="10dp"
-                        android:src="@drawable/home_tab_mine_off" />
+                        android:src="@drawable/icon_car" />
 
                     <TextView
-                        style="@style/wrap_content"
+                        style="@style/wrap_content2"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@id/mine_purse_iv1"
                         android:text="已买到的商品"
@@ -364,9 +364,10 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
+                        android:layout_centerVertical="true"
                         android:src="@drawable/icon_right_arrow" />
 
                 </RelativeLayout>
@@ -388,7 +389,7 @@
                     android:layout_width="40dp"
                     android:layout_height="50dp"
                     android:padding="10dp"
-                    android:src="@drawable/home_tab_mine_off" />
+                    android:src="@drawable/icon_mine_set_on" />
 
                 <TextView
                     style="@style/wrap_content"
@@ -402,9 +403,10 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:paddingRight="10dp"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/icon_right_arrow" />
 
             </RelativeLayout>

@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
+import com.sunshine.sihuo.utils.SysApplication;
+
 
 public class GoodActivity extends FragmentActivity {
 
@@ -17,6 +19,9 @@ public class GoodActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_good);
+
+        SysApplication.getInstance().addActivity(this);
+
         findViewById(R.id.good_iv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

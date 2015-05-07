@@ -109,7 +109,7 @@
             <ListView
                 android:id="@+id/mine_friend_info"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="200dp"></ListView>
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="30dp"

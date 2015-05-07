@@ -19,6 +19,7 @@ import com.sunshine.sihuo.adapters.Show_GridView_Adapter;
 import com.sunshine.sihuo.beans.Index_Info;
 import com.sunshine.sihuo.urls.Kind_Url;
 import com.sunshine.sihuo.utils.Parser_find_Kind;
+import com.sunshine.sihuo.utils.SysApplication;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class ImageView01 extends ActionBarActivity implements AdapterView.OnItem
         setContentView(R.layout.activity_image_view01);
         gv_five_imgeview = ((PullToRefreshGridView) findViewById(R.id.gv_five_imgeview));
 
-
+        SysApplication.getInstance().addActivity(this);
         imge_tv = (TextView) findViewById(R.id.imge_tv);
         Intent intent = getIntent();
         int position = intent.getIntExtra("Position", 0);

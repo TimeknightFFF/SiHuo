@@ -12,6 +12,7 @@ import android.provider.Contacts;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,7 @@ import android.widget.SimpleAdapter;
 
 import com.sunshine.sihuo.chatpackage.ChatActivity;
 import com.sunshine.sihuo.chatpackage.ChatService;
+import com.sunshine.sihuo.utils.SysApplication;
 
 import org.jivesoftware.smack.RosterEntry;
 
@@ -59,6 +61,9 @@ public class MyFriendActivity extends FragmentActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_my_friend);
+
+        SysApplication.getInstance().addActivity(this);
+
         lv = (ListView) findViewById(R.id.mine_friend_info_lv);
         requestfriend_iv = (ImageView) findViewById(R.id.mine_friend_info_image);
         requestfriend_iv.setOnClickListener(this);
@@ -79,11 +84,23 @@ public class MyFriendActivity extends FragmentActivity implements View.OnClickLi
 
         nameAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
         listOfFriend.setAdapter(nameAdapter);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (controller != null) {
+                    boolean flg = controller.addFriend("abc", "name");
+                    if (flg) {
+                        nameAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+
         // listOfFriend的点击事件
         listOfFriend.setOnItemClickListener(this);
 
         Intent intent = new Intent(this, ChatService.class);
-        bindService(intent,this,BIND_AUTO_CREATE);
+        bindService(intent, this, BIND_AUTO_CREATE);
     }
 
     private void getContact() {
@@ -141,6 +158,7 @@ public class MyFriendActivity extends FragmentActivity implements View.OnClickLi
 
     /**
      * 点击联系人启动会话
+     *
      * @param parent
      * @param view
      * @param position
@@ -151,13 +169,11 @@ public class MyFriendActivity extends FragmentActivity implements View.OnClickLi
         // TODO 获取联系人的JID
 
         RosterEntry entry = entries.get(position);
-
         //获取联系人帐号
-        String userJID = entry.getUser();
-
+        String userJID = entry.getUser()+"@10.0.154.2/Smack";
         // 开启聊天会话界面
         Intent intent = new Intent(this, ChatActivity.class);
-        intent.putExtra("userJID",userJID);
+        intent.putExtra("userJID", userJID);
         startActivity(intent);
     }
 

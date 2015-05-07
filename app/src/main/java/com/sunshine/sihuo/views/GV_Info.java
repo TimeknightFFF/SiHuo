@@ -1,9 +1,11 @@
 package com.sunshine.sihuo.views;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,10 +20,11 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import com.sunshine.sihuo.R;
 import com.sunshine.sihuo.beans.Index_Info;
 import com.sunshine.sihuo.utils.Parser_find_L;
+import com.sunshine.sihuo.utils.SysApplication;
 
 import java.util.List;
 
-public class GV_Info extends ActionBarActivity {
+public class GV_Info extends Activity {
 
     private ImageView lv_item_info_iv1, lv_item_info_back;
     private TextView lv_item_info_name, lv_item_list_price,
@@ -32,8 +35,9 @@ public class GV_Info extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lv__info);
-
+        SysApplication.getInstance().addActivity(this);
         initView();
         getListInfo();
 

@@ -20,6 +20,7 @@ import com.sunshine.sihuo.adapters.ShowMoreLAdapter;
 import com.sunshine.sihuo.beans.MoreBeans;
 import com.sunshine.sihuo.urls.Kind_Url;
 import com.sunshine.sihuo.utils.ParserShowMore;
+import com.sunshine.sihuo.utils.SysApplication;
 
 import java.util.List;
 
@@ -40,6 +41,8 @@ public class ShowMoreActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_show_more);
+
+        SysApplication.getInstance().addActivity(this);
 
         utils = new HttpUtils();
 

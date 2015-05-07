@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.sunshine.sihuo.R;
+import com.sunshine.sihuo.utils.SysApplication;
 
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.MessageListener;
@@ -46,6 +47,7 @@ public class ChatActivity extends ActionBarActivity implements ServiceConnection
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        SysApplication.getInstance().addActivity(this);
         txtContent = ((EditText) findViewById(R.id.chat_message_content));
         // 接收目标联系人
         Intent intent = getIntent();
@@ -126,6 +128,7 @@ public class ChatActivity extends ActionBarActivity implements ServiceConnection
         if (chat != null) {
             try {
                 chat.sendMessage(trim);
+                txtContent.setText("");
 
                 // TODO 创建消息实体，显示在ListView 上面
 

@@ -19,6 +19,7 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import com.sunshine.sihuo.beans.Index_Info;
 import com.sunshine.sihuo.urls.Kind_Url;
 import com.sunshine.sihuo.utils.Parser_find_L;
+import com.sunshine.sihuo.utils.SysApplication;
 
 import java.util.List;
 
@@ -37,6 +38,8 @@ public class ShowMore_LV_Activity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lv__info);
+
+        SysApplication.getInstance().addActivity(this);
 
         initView();
         getListInfo();

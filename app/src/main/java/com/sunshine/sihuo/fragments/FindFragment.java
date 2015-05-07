@@ -60,6 +60,7 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
     private List<Special_topic> specialTopic;
     private ImageView[] images = new ImageView[5];
 
+
     private int index = 0;
     /**
      * 控制ViewPager的页面跳转

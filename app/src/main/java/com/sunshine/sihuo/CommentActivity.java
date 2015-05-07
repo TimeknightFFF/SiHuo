@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
+import com.sunshine.sihuo.utils.SysApplication;
+
 
 public class CommentActivity extends FragmentActivity {
 
@@ -18,6 +20,8 @@ public class CommentActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_comment);
+
+        SysApplication.getInstance().addActivity(this);
 
         findViewById(R.id.commet_iv).setOnClickListener(new View.OnClickListener() {
             @Override

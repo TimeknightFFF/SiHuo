@@ -20,7 +20,9 @@ public class Parser_find_Kind {
 
     public static List<Index_Info> getListInfo(String json){
 
-        list.clear();
+        if(list.size()>0){
+            list.clear();
+        }
 
         try {
             JSONArray array = new JSONObject(json).getJSONObject("d").getJSONArray("list");

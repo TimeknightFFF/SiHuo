@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.sunshine.sihuo.utils.SysApplication;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +33,8 @@ public class RequestFriends extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.requestfriend);
+
+        SysApplication.getInstance().addActivity(this);
 
         lv = (ListView) findViewById(R.id.requestfriend_lv);
         requestfriend_iv = (ImageView) findViewById(R.id.requestfriend_iv);

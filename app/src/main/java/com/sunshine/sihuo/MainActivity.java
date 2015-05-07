@@ -13,6 +13,7 @@ import com.sunshine.sihuo.fragments.MessageFragment;
 import com.sunshine.sihuo.fragments.MyFragment;
 import com.sunshine.sihuo.fragments.PhotoFragment;
 import com.sunshine.sihuo.fragments.SiHuoFragment;
+import com.sunshine.sihuo.utils.SysApplication;
 
 
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
@@ -24,7 +25,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        SysApplication.getInstance().addActivity(this);
         Intent intent = getIntent();
         userJID=intent.getStringExtra("userJID");
         radioGroup= ((RadioGroup) findViewById(R.id.main_radio));

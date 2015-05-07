@@ -22,6 +22,10 @@ public class Parser_find_L {
 
     public static List<Index_Info> getListInfo(String json){
 
+        if (list.size()>0){
+            list.clear();
+        }
+
         try {
             JSONArray array = new JSONObject(json).getJSONObject("d").getJSONArray("list");
 

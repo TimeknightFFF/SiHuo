@@ -94,4 +94,14 @@ public class Show_GridView_Adapter extends BaseAdapter {
         return string;
     }
 
+    /**
+     * 刷新数据
+     */
+    public void clear(){
+
+        list.clear();
+
+        notifyDataSetChanged();
+    }
+
 }

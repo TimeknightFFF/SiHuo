@@ -1,10 +1,16 @@
 package com.sunshine.sihuo.chatpackage;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
+
+import com.sunshine.sihuo.R;
 
 import org.jivesoftware.smack.AccountManager;
 import org.jivesoftware.smack.Chat;
@@ -69,7 +75,7 @@ public class ChatService extends Service {
          */
         public Chat openChat(String target, String thread, MessageListener listener) {
             Chat chat = null;
-
+            Log.v("openChat",target);
             if (target != null) {
                 if (conn != null) {
 
@@ -100,7 +106,7 @@ public class ChatService extends Service {
             if (conn != null) {
                 if (!conn.isAuthenticated()) {
                     try {
-                        if(!conn.isConnected()){
+                        if (!conn.isConnected()) {
                             conn.connect();
                         }
                         conn.login(userName, password);
@@ -136,6 +142,7 @@ public class ChatService extends Service {
 
                         ret = new LinkedList<>();
                         ret.addAll(entries);
+                        Log.v("Roster", "查看联系人数量--------------》》" + entries.size());
                     }
                 }
             }
@@ -154,11 +161,11 @@ public class ChatService extends Service {
                         try {
 
                             AccountManager manager = AccountManager.getInstance(conn);
-                            Log.d("register","  user : "+userName+"   pass: "+password);
+                            Log.d("register", "  user : " + userName + "   pass: " + password);
                             manager.createAccount(userName, password);
                             flag = true;
                         } catch (SmackException e) {
-                           e.printStackTrace();
+                            e.printStackTrace();
                             flag = false;
                         } catch (XMPPException e) {
                             e.printStackTrace();
@@ -168,6 +175,40 @@ public class ChatService extends Service {
                 }
             }
             return flag;
+        }
+
+        /**
+         * 添加好友
+         */
+        public boolean addFriend(String target, String nickName) {
+            boolean ret = false;
+
+            if (conn != null) {
+                if (conn.isAuthenticated()) {
+
+                    Roster roster = conn.getRoster();
+
+                    if (roster != null) {
+                        try {
+                            roster.createEntry(target, nickName, null);
+                            ret = true;
+                        } catch (SmackException.NotLoggedInException e) {
+                            ret = false;
+                            e.printStackTrace();
+                        } catch (SmackException.NoResponseException e) {
+                            ret = false;
+                            e.printStackTrace();
+                        } catch (XMPPException.XMPPErrorException e) {
+                            ret = false;
+                            e.printStackTrace();
+                        } catch (SmackException.NotConnectedException e) {
+                            ret = false;
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            return ret;
         }
     }
 
@@ -197,10 +238,7 @@ public class ChatService extends Service {
             }
             conn = null;
         }
-//        ConnectionConfiguration configuration = new ConnectionConfiguration("10.0.154.155");
-//        configuration.setSecurityMode(ConnectionConfiguration.SecurityMode.enabled);
-//        SASLAuthentication.supportSASLMechanism("DIGEST-MD5");
-        conn = new XMPPTCPConnection("10.0.154.155");
+        conn = new XMPPTCPConnection("10.0.154.2");
 
     }
 
@@ -263,6 +301,7 @@ public class ChatService extends Service {
 
                         if (packet instanceof Message) {
 
+                            Log.v("--ChatThread--", "查看方法执行--------------->>");
                             Message msg = ((Message) packet);
 
                             String body = msg.getBody();
@@ -274,6 +313,38 @@ public class ChatService extends Service {
                             String thread = msg.getThread();
 
                             Log.d("ChatThread", "Packet from : " + from + " to: " + to + "content: " + body);
+
+                            // TODO 当收到消息，就模拟一下QQ 的消息通知栏
+                            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(ChatService.this);
+
+                            NotificationCompat.Builder builder = new NotificationCompat.Builder(ChatService.this);
+
+                            builder.setContentTitle("您有新消息");
+                            builder.setContentText(body);
+                            builder.setSmallIcon(R.drawable.icon_goods_menu);
+
+                            //设置点击之后，直接进入聊天
+                            Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+
+                            //如果应用启动了。并且ChatActivity在任务栈中，那么就直接启动
+                            //否则直接开启
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                            //给谁回复
+                            intent.putExtra("userJID", from);
+                            //使用主题，进行两个帐号之间的回复
+                            intent.putExtra("thread", thread);
+
+                            intent.putExtra("body", body);
+
+                            PendingIntent activities = PendingIntent.getActivity(ChatService.this,
+                                    998, intent, PendingIntent.FLAG_ONE_SHOT);
+
+                            builder.setContentIntent(activities);
+
+                            Notification build = builder.build();
+
+                            managerCompat.notify((int) (System.currentTimeMillis()), build);
                         }
                     }
                 };
@@ -295,7 +366,17 @@ public class ChatService extends Service {
                 e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } finally {
+                if (conn != null) {
+                    try {
+                        conn.disconnect();
+                    } catch (SmackException.NotConnectedException e) {
+                        e.printStackTrace();
+                    }
+                    conn = null;
+                }
             }
+
         }
     }
 }

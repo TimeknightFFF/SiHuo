@@ -18,6 +18,7 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import com.sunshine.sihuo.R;
 import com.sunshine.sihuo.beans.Index_Info;
 import com.sunshine.sihuo.utils.Parser_find_L;
+import com.sunshine.sihuo.utils.SysApplication;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class Five_Image extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lv__info);
-
+        SysApplication.getInstance().addActivity(this);
         initView();
         getListInfo();
 

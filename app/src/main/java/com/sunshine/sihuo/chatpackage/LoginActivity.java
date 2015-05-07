@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.sunshine.sihuo.MainActivity;
 import com.sunshine.sihuo.R;
+import com.sunshine.sihuo.utils.SysApplication;
 
 public class LoginActivity extends FragmentActivity implements ServiceConnection, View.OnClickListener {
 
@@ -28,7 +29,7 @@ public class LoginActivity extends FragmentActivity implements ServiceConnection
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
-
+        SysApplication.getInstance().addActivity(this);
         // 启动服务
         Intent intent = new Intent(LoginActivity.this, ChatService.class);
         startService(intent);

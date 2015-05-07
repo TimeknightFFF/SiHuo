@@ -29,7 +29,7 @@
         <ImageView
             android:id="@+id/msg_iv1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:src="@drawable/icon_message_comment" />
 
         <TextView
@@ -47,7 +47,6 @@
             android:layout_alignParentRight="true"
             android:paddingRight="10dp"
             android:src="@drawable/icon_right_arrow"
-
 
             />
     </RelativeLayout>
@@ -67,14 +66,16 @@
         <ImageView
             android:id="@+id/msg_iv2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_message_comment" />
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/icon_message_zan" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/msg_iv2"
+            android:layout_marginLeft="10dp"
             android:text="赞"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -99,7 +100,7 @@
         android:id="@+id/msg_lv"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"></ListView>
+        android:layout_weight="8"></ListView>
 
 
 </LinearLayout>

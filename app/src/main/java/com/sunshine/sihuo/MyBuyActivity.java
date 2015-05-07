@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 
+import com.sunshine.sihuo.utils.SysApplication;
+
 
 public class MyBuyActivity extends FragmentActivity {
 
@@ -16,6 +18,9 @@ public class MyBuyActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_my_buy);
+
+
+        SysApplication.getInstance().addActivity(this);
     }
 
 
