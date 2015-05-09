@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,7 +50,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/4/30.
  */
-public class FindFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class FindFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private ViewPager viewPager;
     private GridView gridView;
@@ -60,7 +61,7 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
     private List<Special_topic> specialTopic;
     private ImageView[] images = new ImageView[5];
 
-
+    private  View view;
     private int index = 0;
     /**
      * 控制ViewPager的页面跳转
@@ -68,10 +69,16 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == 0) {
-                viewPager.setCurrentItem(index % banners.size());
+            if (msg.what == 1) {
+                if (banners != null) {
+                    viewPager.setAdapter(new ViewPagerFragment(getFragmentManager()));
+                }
+
+            }else{
+                viewPager.setCurrentItem(index % 3);
                 index++;
-                handler.sendEmptyMessageDelayed(0, 5000);
+                handler.sendEmptyMessageDelayed(2, 2000);
+
             }
         }
     };
@@ -80,10 +87,17 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
     private HttpUtils utils = new HttpUtils();
     private View headView;
 
+    private ImageView imgvDot1,imgvDot2,imgvDot3;
+    private final ImageView[] imgvDots = new ImageView[3];
+
+    private SwipeRefreshLayout refresh;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.find, null);
+        view = inflater.inflate(R.layout.find, null);
+
+        refresh= ((SwipeRefreshLayout) view.findViewById(R.id.refresh));
 
         listView = ((ListView) view.findViewById(R.id.find_listView));
         listView.setItemsCanFocus(true);
@@ -91,24 +105,31 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
 
         headView = View.inflate(getActivity(), R.layout.headview, null);
 
+
         init(headView);
+
 
         // 加载数据
         getActivityInfo();
 
         getListInfo();
+
+        refresh.setOnRefreshListener(this);
+
+
         return view;
     }
 
 
-    private void addViewPager(List<Banner> list) {
-
-        if (banners != null) {
-            viewPager.setAdapter(new ViewPagerFragment(getFragmentManager()));
-
-            handler.sendEmptyMessageDelayed(0, 5000);
-        }
-    }
+//    private void addViewPager(List<Banner> list) {
+//
+//        if (banners != null) {
+//            viewPager.setAdapter(new ViewPagerFragment(getFragmentManager()));
+//
+//            handler.sendEmptyMessageDelayed(0, 5000);
+//
+//        }
+//    }
 
     /**
      * 控件初始化
@@ -124,6 +145,16 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
         image03 = ((ImageView) view.findViewById(R.id.find_image_03));
         image04 = ((ImageView) view.findViewById(R.id.find_image_04));
         image05 = ((ImageView) view.findViewById(R.id.find_image_05));
+
+        imgvDot1 = ((ImageView) view.findViewById(R.id.imgvDot1));
+        imgvDot2 = ((ImageView) view.findViewById(R.id.imgvDot2));
+        imgvDot3 = ((ImageView) view.findViewById(R.id.imgvDot3));
+
+        imgvDots[0]=imgvDot1;
+        imgvDots[1]=imgvDot2;
+        imgvDots[2]=imgvDot3;
+
+
 
         image01.setOnClickListener(this);
         image02.setOnClickListener(this);
@@ -152,7 +183,12 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
                 // TODO 根据获取到的数据，进行控件数据加载
                 // 添加ViewPager 数据, 要把数据提取出来方便给WebView 传送网络地址
                 banners = map.get("banner");
-                addViewPager(banners);
+                // addViewPager(banners);
+                // 发送消息
+                handler.sendEmptyMessage(1);
+                handler.sendEmptyMessageDelayed(2, 2000);
+
+                getViewPager();
 
                 // TODO 加载GridView数据
                 List<Hot_category> category = map.get("hot_category");
@@ -220,6 +256,14 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
                 startActivity(intent);
                 break;
         }
+    }
+
+    //下拉刷新
+    @Override
+    public void onRefresh() {
+        // 加载数据
+        getActivityInfo();
+        refresh.setRefreshing(false);
     }
 
     /**
@@ -314,8 +358,34 @@ public class FindFragment extends Fragment implements AdapterView.OnItemClickLis
                 });
             }
 
-        @Override
+            @Override
             public void onFailure(HttpException e, String s) {
+
+            }
+        });
+    }
+
+    private void getViewPager(){
+        //两个文本的管理----》vp翻页
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                for (int i = 0; i < imgvDots.length; i++) {
+                    if (i == position) {
+                        imgvDots[i].setImageResource(R.drawable.page_now);
+                    } else {
+                        imgvDots[i].setImageResource(R.drawable.page);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
             }
         });

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/sihuo_bg"
     android:orientation="vertical">
 
     <LinearLayout
@@ -36,17 +36,19 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Button
+        <CheckBox
             android:id="@+id/show_kind_btn1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="1"
             android:background="#fff"
-            android:drawableRight="@drawable/search_filter_arrow_up"
+            android:button="@null"
+            android:drawableRight="@drawable/show_kind_cb"
             android:paddingRight="10dp"
             android:text="手机" />
 
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -55,16 +57,18 @@
             android:orientation="vertical"></LinearLayout>
 
 
-        <Button
+        <CheckBox
             android:id="@+id/show_kind_btn2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="1"
             android:background="#fff"
-            android:drawableRight="@drawable/search_filter_arrow_up"
+            android:button="@null"
+            android:drawableRight="@drawable/show_kind_cb"
             android:paddingRight="10dp"
             android:text="最新发布" />
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -74,14 +78,15 @@
             android:orientation="vertical"></LinearLayout>
 
 
-        <Button
+        <CheckBox
             android:id="@+id/show_kind_btn3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="1"
+            android:button="@null"
+            android:drawableRight="@drawable/show_kind_cb"
             android:background="#fff"
-            android:drawableRight="@drawable/search_filter_arrow_up"
             android:paddingRight="10dp"
             android:text="筛选" />
     </LinearLayout>
@@ -97,7 +102,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:horizontalSpacing="5dp"
+        android:layout_margin="10dp"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
         android:numColumns="2"
         ptr:ptrAnimationStyle="rotate"
         ptr:ptrDrawable="@drawable/refresh"></com.handmark.pulltorefresh.library.PullToRefreshGridView>

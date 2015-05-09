@@ -36,11 +36,22 @@ public class ShowMoreActivity extends FragmentActivity {
     private ListView listView;
     private List<MoreBeans> moreList;
 
+    private View show_more_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_show_more);
+
+        //箭头的返回事件
+        show_more_back = findViewById(R.id.show_more_back);
+        show_more_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         SysApplication.getInstance().addActivity(this);
 

@@ -57,10 +57,22 @@ public class ShowKindActivity extends FragmentActivity implements PullToRefreshB
     private int index=1;
     private String url;
 
+
+    private View show_kind_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_kind);
+        //箭头的返回
+        show_kind_back = findViewById(R.id.show_kind_back);
+        show_kind_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         SysApplication.getInstance().addActivity(this);
 

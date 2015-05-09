@@ -2,6 +2,7 @@ package com.sunshine.sihuo.fiveimages;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,17 +24,29 @@ import com.sunshine.sihuo.utils.SysApplication;
 
 import java.util.List;
 
-public class ImageView01 extends ActionBarActivity implements AdapterView.OnItemClickListener {
+public class ImageView01 extends FragmentActivity implements AdapterView.OnItemClickListener {
     private PullToRefreshGridView gv_five_imgeview;
     private HttpUtils utils = new HttpUtils();
     private List<Index_Info> listInfo;
     private TextView imge_tv;
     String[] str = {"精致生活", "妈咪宝贝", "最可信", "白菜价", "全新特惠"};
 
+    private View image_view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_view01);
+
+        //箭头的返回事件
+        image_view = findViewById(R.id.image_view);
+        image_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         gv_five_imgeview = ((PullToRefreshGridView) findViewById(R.id.gv_five_imgeview));
 
         SysApplication.getInstance().addActivity(this);

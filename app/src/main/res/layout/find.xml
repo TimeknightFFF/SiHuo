@@ -14,13 +14,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
             android:layout_weight="7"
-            android:queryHint="请输入要搜索商品的关键字"
+            android:background="#55CBCECB"
             android:gravity="center"
+            android:queryHint="请输入要搜索商品的关键字"
 
             android:textColor="#fff"
-            android:textSize="28sp"
-            />
+            android:textSize="28sp" />
 
         <ImageButton
             android:layout_width="0dp"
@@ -32,12 +33,18 @@
             android:src="@drawable/find_imagebutton" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/find_listView"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
-      ></ListView>
+        android:layout_weight="8">
+
+        <ListView
+            android:id="@+id/find_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#00000000"></ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
 </LinearLayout>

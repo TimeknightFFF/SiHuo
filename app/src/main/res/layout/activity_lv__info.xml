@@ -288,6 +288,7 @@
             android:textSize="15sp" />
 
         <Button
+            android:id="@+id/btn_pay_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

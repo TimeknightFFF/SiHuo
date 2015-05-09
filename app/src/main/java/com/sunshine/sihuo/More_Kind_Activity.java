@@ -46,7 +46,7 @@ public class More_Kind_Activity extends FragmentActivity implements View.OnClick
     private String phone[] = {"手机", "相机/摄像机", "电脑/电脑配件", "数码3C产品", "奢侈品", "服饰鞋包", "美容/瘦身/香水", "家用电器/影音设备", "家居/日用品", "电动车/汽车/自行车", "宠物/宠物用品", "设备/办公用品", "虚拟币/票务/卡券", "书刊音像/文体用品", "礼品/饰品/玩偶", "商品/零食/保健品", "珠宝/黄金/手表", "艺术品/收藏品/古董古玩", "其他"};
     private String publish[] = {"价格最低", "折扣最大", "离我最近"};
 
-    private Button show_more_kind_btn1, show_more_kind_btn2, show_more_kind_btn3;
+    private CheckBox show_more_kind_btn1, show_more_kind_btn2, show_more_kind_btn3;
     private CheckBox tv1, tv2, tv3, tv4, tv5;
     private Button choice_btn;
 
@@ -61,12 +61,13 @@ public class More_Kind_Activity extends FragmentActivity implements View.OnClick
         gridView = ((PullToRefreshGridView) findViewById(R.id.show_kind_grid));
 
 
-        show_more_kind_btn1 = (Button) findViewById(R.id.show_kind_btn1);
-        show_more_kind_btn2 = (Button) findViewById(R.id.show_kind_btn2);
-        show_more_kind_btn3 = (Button) findViewById(R.id.show_kind_btn3);
+        show_more_kind_btn1 = (CheckBox) findViewById(R.id.show_kind_btn1);
+        show_more_kind_btn2 = (CheckBox) findViewById(R.id.show_kind_btn2);
+        show_more_kind_btn3 = (CheckBox) findViewById(R.id.show_kind_btn3);
         show_more_kind_btn1.setOnClickListener(this);
         show_more_kind_btn2.setOnClickListener(this);
         show_more_kind_btn3.setOnClickListener(this);
+
 
         // 获取从FindFragment中传过来的数据
         int position = getIntent().getIntExtra("more_lv_position", 0);

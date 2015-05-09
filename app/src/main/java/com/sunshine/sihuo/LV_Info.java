@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.sunshine.sihuo.alipay.sdk.pay.demo.PayDemoActivity;
 import com.sunshine.sihuo.beans.Index_Info;
 import com.sunshine.sihuo.chatpackage.ChatActivity;
 import com.sunshine.sihuo.urls.Find_Url;
@@ -37,6 +39,9 @@ public class LV_Info extends FragmentActivity implements View.OnClickListener {
 
     private ImageView lv_item_list_image,image;
     private ImageButton lv_item_list_btn2;
+
+    private Button pay_money;
+    private String price;
     //评论
 
     // 聊天的会话
@@ -72,7 +77,8 @@ public class LV_Info extends FragmentActivity implements View.OnClickListener {
                 finish();
             }
         });
-
+        pay_money = ((Button) findViewById(R.id.btn_pay_money));
+        pay_money.setOnClickListener(this);
         image = ((ImageView) findViewById(R.id.lv_item_info_iv));
         image.setOnClickListener(this);
     }
@@ -126,7 +132,9 @@ public class LV_Info extends FragmentActivity implements View.OnClickListener {
 
                     lv_item_list_image.setImageResource(R.drawable.icon_default_avatr100);
                 }
-                lv_item_list_price.setText(info.getPrice());
+                price = info.getPrice();
+                Log.v("getListInfo","给price赋值  -->"+price);
+                lv_item_list_price.setText(price);
                 lv_item_info_price.setText(info.getOri_price());
 
                 lv_item_list_content.setText(info.getDesc());
@@ -158,17 +166,34 @@ public class LV_Info extends FragmentActivity implements View.OnClickListener {
 
     }
 
-
     @Override
     public void onClick(View v) {
 
+        switch (v.getId()){
+            case R.id.lv_item_info_iv:
+                chat();
+                break;
+            case R.id.btn_pay_money:
+                Intent intent = new Intent(this, PayDemoActivity.class);
+                if (!price.equals("0") && !price.equals("0.0")) {
+                    Log.v("onClick", "查看获取到的商品价格  >>" + price);
+                    double aDouble = Double.parseDouble(price);
+                    intent.putExtra("totalMoney", aDouble);
+                    startActivity(intent);
+                }
+                break;
+        }
+
+    }
+
+    private void chat() {
         if(MainActivity.userJID != null){
             /**
              * 点击按钮，把用户的userJID传送到ChatActivity 就可以聊天了。现在没有完善，
              * 只是完成了，自己和自己聊天，自己和好友聊天
              */
             String userJID = MainActivity.userJID;
-            Log.v("IMAGE",userJID);
+            Log.v("IMAGE", userJID);
 
             // 开启聊天会话界面
             Intent intent = new Intent(this, ChatActivity.class);

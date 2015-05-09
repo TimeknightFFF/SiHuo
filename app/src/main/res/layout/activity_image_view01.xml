@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sihuo_bg"
     android:orientation="vertical"
     tools:context="com.sunshine.sihuo.fiveimages.ImageView01">
 
@@ -15,10 +16,11 @@
 
         <ImageButton
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:id="@+id/image_view"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="9dp"
+            android:layout_weight="1"
             android:background="#ff0000"
             android:padding="50dp"
             android:src="@drawable/icon_back_on" />
@@ -39,6 +41,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
+        android:layout_margin="10dp"
         android:layout_weight="7"
         android:orientation="vertical">
 
@@ -46,12 +49,13 @@
             android:id="@+id/gv_five_imgeview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:horizontalSpacing="5dp"
+            android:divider="#00000000"
+            android:dividerPadding="20dp"
+            android:horizontalSpacing="10dp"
+            android:listSelector="#00000000"
             android:numColumns="2"
+            android:verticalSpacing="10dp"
             ptr:ptrAnimationStyle="rotate"
             ptr:ptrDrawable="@drawable/refresh"></com.handmark.pulltorefresh.library.PullToRefreshGridView>
-
-
     </LinearLayout>
-
 </LinearLayout>

@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,20 +19,26 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.sunshine.sihuo.MainActivity;
 import com.sunshine.sihuo.R;
+import com.sunshine.sihuo.alipay.sdk.pay.demo.PayDemoActivity;
 import com.sunshine.sihuo.beans.Index_Info;
+import com.sunshine.sihuo.chatpackage.ChatActivity;
 import com.sunshine.sihuo.utils.Parser_find_L;
 import com.sunshine.sihuo.utils.SysApplication;
 
 import java.util.List;
 
-public class GV_Info extends Activity {
+public class GV_Info extends Activity implements View.OnClickListener {
 
-    private ImageView lv_item_info_iv1, lv_item_info_back;
+    private ImageView lv_item_info_iv1, lv_item_info_back, lv_item_info_iv;
     private TextView lv_item_info_name, lv_item_list_price,
             lv_item_list_content, lv_item_info_price, lv_item_info_good, lv_item_info_number;
     private ImageButton lv_item_list_btn2;
     private ImageView lv_item_list_image;
+
+    private Button pay_money;
+    private String price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +70,11 @@ public class GV_Info extends Activity {
                 finish();
             }
         });
+        pay_money = ((Button) findViewById(R.id.btn_pay_money));
+        lv_item_info_iv = ((ImageView) findViewById(R.id.lv_item_info_iv));
+
+        pay_money.setOnClickListener(this);
+        lv_item_info_iv.setOnClickListener(this);
     }
 
 
@@ -114,7 +127,9 @@ public class GV_Info extends Activity {
 
                     lv_item_list_image.setImageResource(R.drawable.icon_default_avatr100);
                 }
-                lv_item_list_price.setText(info.getPrice());
+                price = info.getPrice();
+                Log.v("getListInfo","给price赋值  -->"+price);
+                lv_item_list_price.setText(price);
                 lv_item_info_price.setText(info.getOri_price());
 
                 lv_item_list_content.setText(info.getDesc());
@@ -148,4 +163,39 @@ public class GV_Info extends Activity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.lv_item_info_iv:
+                chat();
+                break;
+            case R.id.btn_pay_money:
+                Intent intent = new Intent(this, PayDemoActivity.class);
+                if (!price.equals("0") && !price.equals("0.0")) {
+                    Log.v("onClick", "查看获取到的商品价格  >>" + price);
+                    double aDouble = Double.parseDouble(price);
+                    intent.putExtra("totalMoney", aDouble);
+                    startActivity(intent);
+                }
+                break;
+        }
+
+    }
+
+    private void chat() {
+        if (MainActivity.userJID != null) {
+            /**
+             * 点击按钮，把用户的userJID传送到ChatActivity 就可以聊天了。现在没有完善，
+             * 只是完成了，自己和自己聊天，自己和好友聊天
+             */
+            String userJID = MainActivity.userJID;
+            Log.v("IMAGE", userJID);
+
+            // 开启聊天会话界面
+            Intent intent = new Intent(this, ChatActivity.class);
+            intent.putExtra("userJID", userJID);
+            startActivity(intent);
+        }
+    }
 }
